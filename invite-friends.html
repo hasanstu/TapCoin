@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invite Friends</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="material/css/styles.css">
+    <link rel="stylesheet" href="material/css/st.css">
+    <style>
+        .invite-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .coins {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+
+        .friends-counter {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="frens-invite">
+        <div class="frens-invite-button">
+            <input type="text" value="https://t.me/Wontapcoin_bot/Wontapcoin" id="link" readonly>
+            <button id="copyButton">Copy Link</button>
+        </div>
+    </div>
+
+    <!-- Invite status section -->
+    <div class="invite-section">
+        <p class="coins">Coins Earned: <span id="coins">0</span></p>
+        <p class="friends-counter">Friends Invited: <span id="friendsInvited">0</span></p>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>HOME</span>
+        </a>
+        <a href="leaderboard.html" class="nav-item">
+            <i class="fas fa-trophy"></i>
+            <span>LEADERBOARD</span>
+        </a>
+        <a href="invite-friends.html" class="nav-item">
+            <i class="fas fa-user-friends"></i>
+            <span>FRIENDS</span>
+        </a>
+        <a href="task.html" class="nav-item">
+            <i class="fas fa-tasks"></i>
+            <span>TASKS</span>
+        </a>
+        <a href="balance.html" class="nav-item">
+            <i class="fas fa-wallet"></i>
+            <span>BALANCE</span>
+        </a>
+    </nav>
+
+    <script src="material/js/cojs.js"></script>
+    <script src="material/js/scripts.js"></script>
+
+    <script>
+        // Get references to HTML elements
+        const copyButton = document.getElementById('copyButton');
+        const coinsDisplay = document.getElementById('coins');
+        const friendsInvitedDisplay = document.getElementById('friendsInvited');
+
+        // Initial data - could be replaced with actual user data from a database in real-world applications
+        let coins = 0;
+        let friendsInvited = 0;
+
+        // Function to update the UI
+        function updateUI() {
+            coinsDisplay.textContent = coins;
+            friendsInvitedDisplay.textContent = friendsInvited;
+        }
+
+        // Function for copying the link
+        copyButton.addEventListener('click', function () {
+            const inviteLink = document.getElementById('link');
+            inviteLink.select();
+            document.execCommand('copy');
+
+            // Increase the number of friends invited and give 10 coins
+            friendsInvited += 1;
+            coins += 100000;
+
+            // Update the UI
+            updateUI();
+            alert('Link copied! You\'ve earned 100000 coins for inviting a friend!');
+        });
+
+        // Initial UI update
+        updateUI();
+    </script>
+</body>
+</html>
